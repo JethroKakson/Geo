@@ -972,7 +972,7 @@
             <div class="detail-item"><span class="detail-label">Result:</span> <span class="detail-value">${s.delivery}</span></div>
             <div class="detail-item"><span class="detail-label">Description:</span> <span class="detail-value">${s.description.replace(/\n/g, '<br>')}</span></div>
           </div>
-          <a href="https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(`Hello, I'm interested in ${s.name} (${s.price})`)}" target="_blank" class="request-btn">Request Service 💬</a>
+           <a href="https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(`Hello it's [your Name, Business], I'm interested in ${s.name} \n(${s.price}) \n${s.duration}\n${s.delivery}\n${s.description}`)}" target="_blank" class="request-btn">Request Service 💬</a>
         `;
         grid.appendChild(card);
       });
