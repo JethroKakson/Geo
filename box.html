@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GeoSynch - Professional Services</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #e0e0e0;
+      background: #1a1a1a;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    /* Navbar Styles */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(26, 26, 26, 0.98);
+      border-bottom: 1px solid #333;
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+
+    .navbar-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar-logo {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .navbar-logo img {
+      height: 50px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .navbar-menu {
+      display: flex;
+      gap: 30px;
+      list-style: none;
+    }
+
+    .navbar-menu a {
+      text-decoration: none;
+      color: #b0b0b0;
+      font-weight: 500;
+      transition: color 0.3s ease;
+      font-size: 1em;
+    }
+
+    .navbar-menu a:hover {
+      color: #5eead4;
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      width: 25px;
+      height: 3px;
+      background: #b0b0b0;
+      border-radius: 3px;
+      transition: all 0.3s ease;
+    }
+
+    /* Hero Section */
+    .hero-section {
+      margin-top: 80px;
+      background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+      border-radius: 15px;
+      padding: 80px 40px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      margin-bottom: 30px;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid #333;
+    }
+
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(94, 234, 212, 0.05) 1px, transparent 1px);
+      background-size: 50px 50px;
+      animation: float 20s linear infinite;
+    }
+
+    @keyframes float {
+      from { transform: translate(0, 0); }
+      to { transform: translate(50px, 50px); }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-section h1 {
+      color: #5eead4;
+      font-size: 3.5em;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .hero-section p {
+      color: #b0b0b0;
+      font-size: 1.4em;
+      margin-bottom: 30px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-btn {
+      display: inline-block;
+      background: #5eead4;
+      color: #1a1a1a;
+      padding: 15px 40px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1em;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(94, 234, 212, 0.3);
+    }
+
+    .hero-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(94, 234, 212, 0.5);
+      background: #4dd4ba;
+    }
+
+    /* About Section */
+    .about-section {
+      background: #2d2d2d;
+      padding: 60px 40px;
+      border-radius: 15px;
+      margin-bottom: 30px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      border: 1px solid #3a3a3a;
+    }
+
+    .about-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .about-header h2 {
+      color: #5eead4;
+      font-size: 2.5em;
+      margin-bottom: 15px;
+    }
+
+    .about-header p {
+      color: #b0b0b0;
+      font-size: 1.2em;
+    }
+
+    .about-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .about-text {
+      color: #c0c0c0;
+      font-size: 1.1em;
+      line-height: 1.8;
+    }
+
+    .about-text p {
+      margin-bottom: 20px;
+    }
+
+    .about-features {
+      display: grid;
+      gap: 20px;
+    }
+
+    .feature-item {
+      background: linear-gradient(135deg, #3a3a3a 0%, #2a2a2a 100%);
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      transition: all 0.3s ease;
+      border: 1px solid #4a4a4a;
+    }
+
+    .feature-item:hover {
+      transform: translateX(10px);
+      border-color: #5eead4;
+      box-shadow: 0 5px 15px rgba(94, 234, 212, 0.2);
+    }
+
+    .feature-icon {
+      font-size: 2em;
+    }
+
+    .feature-text h4 {
+      font-size: 1.2em;
+      margin-bottom: 5px;
+      color: #5eead4;
+    }
+
+    .feature-text p {
+      font-size: 0.95em;
+      color: #b0b0b0;
+    }
+
+    .stats-section {
+      background: #2d2d2d;
+      padding: 50px 30px;
+      border-radius: 15px;
+      margin-bottom: 30px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      border: 1px solid #3a3a3a;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 40px;
+      text-align: center;
+    }
+
+    .stat-item {
+      padding: 20px;
+    }
+
+    .stat-number {
+      font-size: 3em;
+      font-weight: bold;
+      color: #5eead4;
+      margin-bottom: 10px;
+    }
+
+    .stat-label {
+      font-size: 1.1em;
+      color: #b0b0b0;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .services-header {
+      text-align: center;
+      color: white;
+      margin-bottom: 30px;
+    }
+
+    .services-header h2 {
+      font-size: 2.2em;
+      margin-bottom: 10px;
+      color: #5eead4;
+    }
+
+    .services-header p {
+      color: #b0b0b0;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+      margin-bottom: 40px;
+    }
+
+    .service-card {
+      background: #2d2d2d;
+      border-radius: 15px;
+      padding: 30px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid #3a3a3a;
+    }
+
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(94, 234, 212, 0.3);
+      border-color: #5eead4;
+    }
+
+    .service-icon {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, #5eead4 0%, #4dd4ba 100%);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      margin-bottom: 20px;
+      box-shadow: 0 5px 15px rgba(94, 234, 212, 0.3);
+    }
+
+    .service-name {
+      font-size: 1.6em;
+      color: #e0e0e0;
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+
+    .service-details {
+      flex-grow: 1;
+      margin-bottom: 20px;
+    }
+
+    .detail-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid #3a3a3a;
+    }
+
+    .detail-item:last-child {
+      border-bottom: none;
+    }
+
+    .detail-label {
+      color: #b0b0b0;
+      font-weight: 500;
+    }
+
+    .detail-value {
+      color: #e0e0e0;
+      font-weight: 600;
+    }
+
+    .price {
+      color: #5eead4;
+      font-size: 1.3em;
+    }
+
+    .request-btn {
+      background: #5eead4;
+      color: #1a1a1a;
+      border: none;
+      padding: 15px 30px;
+      font-size: 1.1em;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-weight: 600;
+      text-decoration: none;
+      display: block;
+      text-align: center;
+    }
+
+    .request-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(94, 234, 212, 0.5);
+      background: #4dd4ba;
+    }
+
+    .reviews-section {
+      background: transparent;
+      padding: 50px 30px;
+      border-radius: 15px;
+      margin-bottom: 30px;
+      overflow: hidden;
+    }
+
+    .reviews-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .reviews-header h2 {
+      font-size: 2.2em;
+      color: #5eead4;
+      margin-bottom: 10px;
+    }
+
+    .carousel-container {
+      position: relative;
+      overflow: hidden;
+      padding: 20px 0;
+      margin-bottom: 40px;
+    }
+
+    .carousel-track {
+      display: flex;
+      width: max-content;
+      animation: scrollLeft 60s linear infinite;
+    }
+
+    .carousel-track:hover {
+      animation-play-state: paused;
+    }
+
+    @keyframes scrollLeft {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    .review-card {
+      min-width: 350px;
+      background: #2d2d2d;
+      border: 1px solid #3a3a3a;
+      border-radius: 15px;
+      padding: 30px;
+      margin: 0 15px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      flex-shrink: 0;
+      transition: all 0.3s ease;
+    }
+
+    .review-card:hover {
+      transform: scale(1.03);
+      border-color: #5eead4;
+      box-shadow: 0 5px 15px rgba(94, 234, 212, 0.2);
+    }
+
+    .review-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .review-image {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      margin-right: 15px;
+      object-fit: cover;
+      border: 2px solid #5eead4;
+    }
+
+    .review-author {
+      flex-grow: 1;
+    }
+
+    .review-name {
+      font-weight: 600;
+      font-size: 1.1em;
+      color: #e0e0e0;
+      margin-bottom: 5px;
+    }
+
+    .review-title {
+      color: #b0b0b0;
+      font-size: 0.9em;
+    }
+
+    .review-stars {
+      color: #ffc107;
+      font-size: 1.2em;
+      margin-bottom: 15px;
+    }
+
+    .review-text {
+      color: #c0c0c0;
+      line-height: 1.6;
+      font-style: italic;
+    }
+
+    .review-form-section {
+      background: #2d2d2d;
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      max-width: 600px;
+      margin: 0 auto 30px;
+      border: 1px solid #3a3a3a;
+    }
+
+    .review-form-section h3 {
+      color: #5eead4;
+      font-size: 1.8em;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      color: #e0e0e0;
+      font-weight: 500;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px;
+      border: 2px solid #3a3a3a;
+      border-radius: 8px;
+      font-size: 1em;
+      font-family: inherit;
+      transition: border-color 0.3s ease;
+      background: #1a1a1a;
+      color: #e0e0e0;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #5eead4;
+    }
+
+    .star-rating {
+      display: flex;
+      gap: 10px;
+      font-size: 2em;
+    }
+
+    .star {
+      cursor: pointer;
+      color: #3a3a3a;
+      transition: color 0.2s ease, transform 0.2s ease;
+    }
+
+    .star.active {
+      color: #ffc107;
+      transform: scale(1.1);
+    }
+
+    .submit-btn {
+      background: #5eead4;
+      color: #1a1a1a;
+      border: none;
+      padding: 15px 40px;
+      font-size: 1.1em;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-weight: 600;
+      width: 100%;
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(94, 234, 212, 0.5);
+      background: #4dd4ba;
+    }
+
+    .success-message {
+      background: #4caf50;
+      color: white;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      text-align: center;
+      display: none;
+    }
+
+    .success-message.show {
+      display: block;
+    }
+
+    footer {
+      background: #2d2d2d;
+      padding: 30px;
+      text-align: center;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      border: 1px solid #3a3a3a;
+    }
+
+    footer p {
+      color: #b0b0b0;
+      margin-bottom: 10px;
+    }
+
+    .contact-info {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      margin-top: 15px;
+      font-size: 0.95em;
+      color: #b0b0b0;
+    }
+
+    /* Mobile Responsive */
+    @media(max-width: 768px) {
+      .navbar-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: #1a1a1a;
+        flex-direction: column;
+        padding: 20px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        border-top: 1px solid #333;
+      }
+
+      .navbar-menu.active {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+
+      .hero-section {
+        padding: 60px 20px;
+      }
+
+      .hero-section h1 {
+        font-size: 2em;
+      }
+
+      .hero-section p {
+        font-size: 1em;
+      }
+
+      .about-content {
+        grid-template-columns: 1fr;
+      }
+
+      .about-section {
+        padding: 40px 20px;
+      }
+
+      .review-card {
+        min-width: 280px;
+      }
+
+      .contact-info {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <div class="navbar-logo">
+        <img src="./geo-removebg-preview.png" alt="GeoSynch Logo">
+      </div>
+      <ul class="navbar-menu" id="navbarMenu">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="menu-toggle" id="menuToggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <!-- Hero Section -->
+    <section class="hero-section" id="home">
+      <div class="hero-content">
+        <h1>Transform Your Business Presence</h1>
+        <p>Professional services tailored to elevate your brand and reach your target audience effectively</p>
+        <div class="contact-info">
+          <div class="contact-item">📧 info@yourcompany.com</div>
+          <div class="contact-item">📞 +256 763 744062</div>
+          <div class="contact-item">📍 Kampala, Uganda</div>
+        </div>
+        <br>
+        <a href="#services" class="hero-btn">Explore Our Services</a>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+      <div class="about-header">
+        <h2>About GeoSynch</h2>
+        <p>Your Trusted Partner in Digital Growth</p>
+      </div>
+      <div class="about-content">
+        <div class="about-text">
+          <p>At GeoSynch, we specialize in delivering comprehensive digital solutions that help businesses establish and enhance their online presence. With over 5 years of experience, we've successfully served 500+ clients across various industries.</p>
+          <p>Our mission is to empower businesses with cutting-edge digital strategies, from Google Business Profile optimization to custom website development. We believe in creating lasting partnerships and delivering measurable results that drive growth.</p>
+          <p>Every project we undertake is backed by our commitment to excellence, innovation, and customer satisfaction. Let us help you navigate the digital landscape and achieve your business goals.</p>
+        </div>
+        <div class="about-features">
+          <div class="feature-item">
+            <div class="feature-icon">🎯</div>
+            <div class="feature-text">
+              <h4>Result-Driven</h4>
+              <p>We focus on delivering tangible outcomes that matter to your business</p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">💼</div>
+            <div class="feature-text">
+              <h4>Professional Team</h4>
+              <p>Expert professionals dedicated to your success</p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">⚡</div>
+            <div class="feature-text">
+              <h4>Fast Delivery</h4>
+              <p>Efficient processes ensuring timely project completion</p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">🤝</div>
+            <div class="feature-text">
+              <h4>Ongoing Support</h4>
+              <p>Continuous assistance even after project delivery</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats Section -->
+    <div class="stats-section">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-number" data-target="500">0</div>
+          <div class="stat-label">Happy Clients</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-target="1200">0</div>
+          <div class="stat-label">Projects Completed</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-target="5">0</div>
+          <div class="stat-label">Years Experience</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-target="98">0</div>
+          <div class="stat-label">Success Rate %</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Services Section -->
+    <div id="services">
+      <div class="services-header">
+        <h2>Our Services</h2>
+        <p>Choose from our range of professional services</p>
+      </div>
+      <div class="services-grid" id="servicesGrid"></div>
+    </div>
+
+    <!-- Reviews Section -->
+    <div class="reviews-section" id="reviews">
+      <div class="reviews-header">
+        <h2>What Our Clients Say</h2>
+      </div>
+      <div class="carousel-container">
+        <div class="carousel-track" id="carouselTrack"></div>
+      </div>
+    </div>
+
+    <!-- Review Form -->
+    <div class="reviews-section">
+      <div class="review-form-section">
+        <h3>Share Your Experience</h3>
+        <div class="success-message" id="successMessage">✅ Thank you! Your review has been submitted!</div>
+        <form id="reviewForm">
+          <div class="form-group">
+            <label>Your Name *</label>
+            <input type="text" id="reviewName" required>
+          </div>
+          <div class="form-group">
+            <label>Your Title/Position</label>
+            <input type="text" id="reviewTitle">
+          </div>
+          <div class="form-group">
+            <label>Your Rating *</label>
+            <div class="star-rating" id="starRating">
+              <span class="star" data-rating="1">⭐</span>
+              <span class="star" data-rating="2">⭐</span>
+              <span class="star" data-rating="3">⭐</span>
+              <span class="star" data-rating="4">⭐</span>
+              <span class="star" data-rating="5">⭐</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Upload Your Picture (optional)</label>
+            <input type="file" id="reviewImage" accept="image/*">
+          </div>
+          <div class="form-group">
+            <label>Your Review *</label>
+            <textarea id="reviewText" rows="5" required></textarea>
+          </div>
+          <button type="submit" class="submit-btn">Submit Review</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="contact">
+      <p>&copy; 2025 GeoSynch. All rights reserved.</p>
+      <p>Quality services delivered with excellence</p>
+    </footer>
+  </div>
+
+  <script>
+    const WHATSAPP_NUMBER = '256763744062';
+
+    const services = [
+      {
+        name: 'Setup & Verification',
+        icon: '✅',
+        price: '$50 – $100',
+        duration: '5 – 7 days',
+        delivery: 'Claim & verify business profile',
+        description: '• Add NAP consistency\n• Upload logo, cover photo, description, services\n• Optimize categories'
+      },
+      {
+        name: 'Profile Optimization',
+        icon: '🛠️',
+        price: '$80 – $150',
+        duration: '5 – 12 days',
+        delivery: 'Enhanced profile visibility',
+        description: '• Add services, products, menus, photos\n• Correct pin location\n• Add business hours, attributes\n• Keyword-rich description'
+      },
+      {
+        name: 'Review & Reputation Management',
+        icon: '⭐',
+        price: '$50 – $120 / month',
+        duration: 'Monthly',
+        delivery: 'Boost and manage reviews',
+        description: '• Get 10–30+ new reviews monthly\n• Set up system (QR codes, SMS/email)\n• Respond to negative reviews'
+      },
+      {
+        name: 'Ongoing Posting & Local SEO',
+        icon: '📢',
+        price: '$100 – $300 / month',
+        duration: 'Monthly',
+        delivery: 'Weekly posts & local SEO',
+        description: '• Weekly Google Posts\n• Geo-tagging photos\n• Keyword optimization\n• Citation building'
+      },
+      {
+        name: 'Insights & Reporting',
+        icon: '📊',
+        price: '$30 – $50 / month',
+        duration: 'Monthly',
+        delivery: 'Analytics & reporting',
+        description: '• Monthly report: calls, visits\n• Competitor comparison'
+      },
+      {
+        name: 'Website Development',
+        icon: '🎨',
+        price: '$100 - $500',
+        duration: '5 - 7 days',
+        delivery: 'Creating business website',
+        description: '• Information website\n• Business website\n• Single page website\n• Multiple page website'
+      }
+    ];
+
+    let reviews = [
+      { name: 'Sarah Johnson', title: 'CEO, TechStart', image: 'https://i.pravatar.cc/150?img=1', text: 'Outstanding service! Delivered ahead of schedule.', stars: 5 },
+      { name: 'Michael Chen', title: 'Marketing Director', image: 'https://i.pravatar.cc/150?img=13', text: 'The optimization transformed our local visibility!', stars: 5 },
+      { name: 'Emily Rodriguez', title: 'Small Business Owner', image: 'https://i.pravatar.cc/150?img=5', text: 'Excellent support and communication throughout.', stars: 5 }
+    ];
+
+    // Mobile menu toggle
+    document.getElementById('menuToggle').addEventListener('click', () => {
+      document.getElementById('navbarMenu').classList.toggle('active');
+    });
+
+    // Close mobile menu when clicking a link
+    document.querySelectorAll('.navbar-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.getElementById('navbarMenu').classList.remove('active');
+      });
+    });
+
+    // Star rating
+    let selectedRating = 0;
+    const stars = document.querySelectorAll('.star');
+    stars.forEach(star => {
+      star.addEventListener('click', () => {
+        selectedRating = parseInt(star.dataset.rating);
+        updateStars();
+      });
+    });
+
+    function updateStars() {
+      stars.forEach((s, i) => {
+        s.classList.toggle('active', i < selectedRating);
+      });
+    }
+
+    // Review form submission
+    document.getElementById('reviewForm').addEventListener('submit', async e => {
+      e.preventDefault();
+      if (selectedRating === 0) {
+        alert('Please select a rating!');
+        return;
+      }
+      const name = document.getElementById('reviewName').value;
+      const title = document.getElementById('reviewTitle').value || 'Customer';
+      const text = document.getElementById('reviewText').value;
+      const file = document.getElementById('reviewImage').files[0];
+      let image = 'https://i.pravatar.cc/150?u=' + encodeURIComponent(name);
+      if (file) image = URL.createObjectURL(file);
+      
+      const newReview = { name, title, image, text, stars: selectedRating };
+      reviews.push(newReview);
+      renderReviews();
+
+      const msg = `New Review Submitted:\n⭐ ${selectedRating} Stars\n👤 Name: ${name}\n💼 Title: ${title}\n📝 Review: ${text}`;
+      const waLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
+      window.open(waLink, '_blank');
+
+      const success = document.getElementById('successMessage');
+      success.classList.add('show');
+      setTimeout(() => success.classList.remove('show'), 4000);
+
+      e.target.reset();
+      selectedRating = 0;
+      updateStars();
+    });
+
+    function renderServices() {
+      const grid = document.getElementById('servicesGrid');
+      grid.innerHTML = '';
+      services.forEach(s => {
+        const card = document.createElement('div');
+        card.className = 'service-card';
+        card.innerHTML = `
+          <div class="service-icon">${s.icon}</div>
+          <h3 class="service-name">${s.name}</h3>
+          <div class="service-details">
+            <div class="detail-item"><span class="detail-label">Price:</span> <span class="detail-value price">${s.price}</span></div>
+            <div class="detail-item"><span class="detail-label">Duration:</span> <span class="detail-value">${s.duration}</span></div>
+            <div class="detail-item"><span class="detail-label">Result:</span> <span class="detail-value">${s.delivery}</span></div>
+            <div class="detail-item"><span class="detail-label">Description:</span> <span class="detail-value">${s.description.replace(/\n/g, '<br>')}</span></div>
+          </div>
+          <a href="https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(`Hello, I'm interested in ${s.name} (${s.price})`)}" target="_blank" class="request-btn">Request Service 💬</a>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    function renderReviews() {
+      const track = document.getElementById('carouselTrack');
+      track.innerHTML = '';
+      const allReviews = [...reviews, ...reviews];
+      allReviews.forEach(r => {
+        const card = document.createElement('div');
+        card.className = 'review-card';
+        card.innerHTML = `
+          <div class="review-header">
+            <img src="${r.image}" class="review-image" alt="${r.name}">
+            <div class="review-author">
+              <div class="review-name">${r.name}</div>
+              <div class="review-title">${r.title}</div>
+            </div>
+          </div>
+          <div class="review-stars">${'⭐'.repeat(r.stars)}</div>
+          <div class="review-text">"${r.text}"</div>
+        `;
+        track.appendChild(card);
+      });
+    }
+
+    function animateCounter(el, target, duration = 2000) {
+      let count = 0;
+      const increment = target / (duration / 16);
+      const timer = setInterval(() => {
+        count += increment;
+        if (count >= target) {
+          el.textContent = target;
+          clearInterval(timer);
+        } else {
+          el.textContent = Math.floor(count);
+        }
+      }, 16);
+    }
+
+    function setupStatsObserver() {
+      const sec = document.querySelector('.stats-section');
+      const nums = document.querySelectorAll('.stat-number');
+      let done = false;
+      const obs = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && !done) {
+            done = true;
+            nums.forEach(n => animateCounter(n, parseInt(n.dataset.target)));
+          }
+        });
+      }, { threshold: 0.5 });
+      obs.observe(sec);
+    }
+
+    // Initialize
+    renderServices();
+    renderReviews();
+    setupStatsObserver();
+  </script>
+</body>
+</html>
